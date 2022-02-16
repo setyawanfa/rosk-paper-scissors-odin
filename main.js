@@ -73,7 +73,7 @@ function playRound(playerSelection,computerSelection){
 }
 
 for (i=0;i<5;i++){
-    const playerSelection = window.prompt("Player selection for Paper,rock, scissor :");
+    // const playerSelection = window.prompt("Player selection for Paper,rock, scissor :");
     playerSelection = playerSelection.toLowerCase();
     // const playerSelection = "scissors";
     console.log("player : "+playerSelection)
