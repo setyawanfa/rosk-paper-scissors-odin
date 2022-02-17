@@ -20,6 +20,7 @@ body{
     color:black;
     font-size: 32px;
     font-weight: 800;
+    margin-bottom: 50px;
 }
 .footer{
     display : flex;
@@ -36,8 +37,10 @@ body{
 .player{
     display : flex;
     flex-direction : row;
-    justify-content: space-around;
+    justify-content: center;
+    gap : 30px;
     align-items: flex-start;
+    margin : 40px;
     
 }
 .selector{
@@ -45,6 +48,23 @@ body{
     width: 150px;
 }
 
+.scores{
+    display : flex;
+    flex-direction : row;
+    justify-content: center;
+    gap : 70px;
+    font-size: 30px;
+}
+
+.score-detail{
+    text-align: center;
+}
+
+.score{
+    font-size : 40px;
+    font-weight: bolder;
+
+}
 
 .images{
     max-width: 100px;

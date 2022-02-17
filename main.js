@@ -1,5 +1,5 @@
-function computerPlay(){
-    let computer = Math.floor(Math.random()*2);
+function computerPlay() {
+    let computer = Math.floor(Math.random() * 2);
     var choice = "";
     switch (computer) {
         case 0:
@@ -12,92 +12,145 @@ function computerPlay(){
             choice = "scissors"
     }
     // console.log("computer :" +choice)
-    return(choice)
+    return (choice)
 }
 
-function playRound(playerSelection,computerSelection){
-    result= ""
-    switch (playerSelection){
+function playRound(playerSelection, computerSelection) {
+    
+    switch (playerSelection) {
         case "scissors":
-            // if (computerSelection=="rock"){
-            //     result = "lose";
-            // }else if (computerSelection=="paper"){
-            //     result = "win";
-            // }
-            // else {
-            //     result=
-            // }
-        switch (computerSelection){
+                       switch (computerSelection) {
                 case "rock":
-                    result = "lose";
+                    return("lose");
                     break;
                 case "paper":
-                    result = "win";
+                    return("win");
                     break;
                 case "scissors":
-                    result = "draw";
+                    return("draw");
                     break;
             }
-        break;
+            break;
         case "rock":
-            switch (computerSelection){
+            switch (computerSelection) {
                 case "rock":
-                    result = "draw";
+                    return("draw");
                     break;
                 case "paper":
-                    result = "lose";
+                    return("lose");
                     break;
                 case "scissors":
-                    result = "win";
+                    return("win");
                     break;
             }
             break;
         case "paper":
-            switch (computerSelection){
+            switch (computerSelection) {
                 case "rock":
-                    result = "win";
+                    return("win");
                     break;
                 case "paper":
-                    result = "draw";
+                    return("draw");
                     break;
                 case "scissors":
-                    result = "lose";
+                    return("lose");
                     break;
 
             }
             break;
     }
-    // console.log(result)
-    return (result);
+    
+    
 
 }
 
-for (i=0;i<5;i++){
-    // const playerSelection = window.prompt("Player selection for Paper,rock, scissor :");
-    playerSelection = playerSelection.toLowerCase();
-    // const playerSelection = "scissors";
-    console.log("player : "+playerSelection)
-    const computerSelection = computerPlay();
-    const result = playRound(playerSelection,computerSelection)
-    if (result=="win"){
-        console.log("Player win")
+
+
+function readInput() {
+
+}
+
+function endGame() {
+    if (playerScore > computerScore) {
+        alert('You win!')
+    } else {
+        alert("You lose!")
+    }
+}
+
+
+var playerShow = document.getElementById('player-score')
+var computerShow = document.getElementById('computer-score')
+
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+let computerScore = parseInt(computerShow.textContent)
+let playerScore = parseInt(playerShow.textContent)
+
+
+round = Math.max(computerScore, playerScore)
+
+if (round === 5) {
+    endGame()
+}
+
+rock.addEventListener('click', () => {
+    onClickGame("rock")
+})
+paper.addEventListener('click', () => {
+    onClickGame("paper")
+})
+scissors.addEventListener('click', () => {
+    onClickGame('scissors')
+})
+
+
+
+showScores(playerScore, computerScore)
+
+
+
+
+
+
+
+
+function showScores(playerScore, computerScore) {
+
+
+    // player = document.createElement('p');
+    // computer = document.createElement('p');
+    playerShow.textContent = playerScore;
+    computerShow.textContent = computerScore;
+
+}
+
+function onClickGame(playerSelection){
+    console.log(playerSelection)
+    computerSelection =computerPlay()
+    console.log(computerSelection)
+    var result = playRound(playerSelection,computerSelection);
+    console.log(result);
+    if(result=="win"){
+        playerScore+=1;
     }
     else if (result=="lose"){
-        console.log("Computer win")
+        computerScore+=1;
     }
     else{
-        console.log("Draw")
+        computerScore+=0;
+        playerScore+=0;
+    }
+    showScores(playerScore,computerScore)
+    
+}
+
+function endGame(){
+    if(playerScore>computerScore){
+        alert('You win')
+    }
+    else{
+        alert('You lose')
     }
 }
-// const playerSelection = "rock";
-// console.log("player : "+playerSelection)
-// const computerSelection = computerPlay();
-
-
-
-
-// for (let i=0;i<5;i++){
-//     computerPlay
-// }
-
-

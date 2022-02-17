@@ -7,6 +7,7 @@
     <link rel="icon" href="img/rock-icon-8519-Windows.ico" type="image/x-icon">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='main.js' defer></script>
 </head>
 <body>
@@ -41,21 +42,21 @@
 
         </div>
         <div class="scores">
-            <div id="player-scores">
+            <div class="score-detail">
                 <div class="score-desc">
-                    Player's Score
+                    Player
                 </div>
-                <div class="score">
-
+                <div class="score" id="player-score">
+                    0
                 </div>
 
             </div>
-            <div id="computer-scores">
+            <div class="score-detail">
                 <div class="score-desc">
-                    Computer's Score
+                    Computer
                 </div>
-                <div class="score">
-                    
+                <div class="score" id="computer-score">
+                    0
                 </div>
             </div>
         </div>
