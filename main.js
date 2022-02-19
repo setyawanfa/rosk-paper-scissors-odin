@@ -16,65 +16,82 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    
+
     switch (playerSelection) {
         case "scissors":
-                       switch (computerSelection) {
+            switch (computerSelection) {
                 case "rock":
-                    return("lose");
+                    return ("lose");
                     break;
                 case "paper":
-                    return("win");
+                    return ("win");
                     break;
                 case "scissors":
-                    return("draw");
+                    return ("draw");
                     break;
             }
             break;
         case "rock":
             switch (computerSelection) {
                 case "rock":
-                    return("draw");
+                    return ("draw");
                     break;
                 case "paper":
-                    return("lose");
+                    return ("lose");
                     break;
                 case "scissors":
-                    return("win");
+                    return ("win");
                     break;
             }
             break;
         case "paper":
             switch (computerSelection) {
                 case "rock":
-                    return("win");
+                    return ("win");
                     break;
                 case "paper":
-                    return("draw");
+                    return ("draw");
                     break;
                 case "scissors":
-                    return("lose");
+                    return ("lose");
                     break;
 
             }
             break;
     }
-    
-    
+
+
 
 }
 
 
+function restartFunc(input) {
+    finalInput = input + ' \n Restart?'
+    alert(finalInput)
+    restartGame();
+    // if (alert(finalInput)) {
+    //     restartGame()
+    // } else {
+    //     rock.style.pointerEvents = 'none';
+    //     paper.style.pointerEvents = 'none';
+    //     scissors.style.pointerEvents = 'none';
 
-function readInput() {
+    //     buttonRestart = document.createElement('button');
+    //     buttonRestart.textContent = "Restart?";
+    //     restartDiv.append(buttonRestart);
+    //     buttonRestart.addEventListener('click', () => {
+    //         restartGame()
+    //     })
 
+
+    // }
 }
 
 function endGame() {
     if (playerScore > computerScore) {
-        alert('You win!')
+        restartFunc("You Win!")
     } else {
-        alert("You lose!")
+        restartFunc("You Lose!")
     }
 }
 
@@ -87,13 +104,11 @@ const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
 let computerScore = parseInt(computerShow.textContent)
 let playerScore = parseInt(playerShow.textContent)
+const restartDiv = document.getElementsByClassName('.restart');
 
 
-round = Math.max(computerScore, playerScore)
 
-if (round === 5) {
-    endGame()
-}
+
 
 rock.addEventListener('click', () => {
     onClickGame("rock")
@@ -126,31 +141,35 @@ function showScores(playerScore, computerScore) {
 
 }
 
-function onClickGame(playerSelection){
+function onClickGame(playerSelection) {
     console.log(playerSelection)
-    computerSelection =computerPlay()
+    computerSelection = computerPlay()
     console.log(computerSelection)
-    var result = playRound(playerSelection,computerSelection);
+    var result = playRound(playerSelection, computerSelection);
     console.log(result);
-    if(result=="win"){
-        playerScore+=1;
+    if (result == "win") {
+        playerScore += 1;
+    } else if (result == "lose") {
+        computerScore += 1;
+    } else {
+        computerScore += 0;
+        playerScore += 0;
     }
-    else if (result=="lose"){
-        computerScore+=1;
+    showScores(playerScore, computerScore)
+
+    round = Math.max(computerScore, playerScore)
+    if (round == 5) {
+        endGame()
     }
-    else{
-        computerScore+=0;
-        playerScore+=0;
-    }
-    showScores(playerScore,computerScore)
-    
 }
 
-function endGame(){
-    if(playerScore>computerScore){
-        alert('You win')
-    }
-    else{
-        alert('You lose')
-    }
+function restartGame() {
+    playerScore = 0;
+    computerScore = 0;
+    
+    showScores(playerScore, computerScore);
+    // rock.style.pointerEvents = 'auto';
+    // paper.style.pointerEvents = 'auto';
+    // scissors.style.pointerEvents = 'auto';
+
 }
